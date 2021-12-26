@@ -1,0 +1,44 @@
+.card {
+  background-color: #f4f4f4c2;
+  /* background-color: #d8dfec; */
+  color: inherit;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #00000033;
+  text-align: center;
+  margin: 1rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  min-width: 300px;
+  max-width: 90%;
+  max-height: 30%;
+  height: 450px;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #171717;
+  /* background-color: #ffffff; */
+  background-color: #d8dfec;
+  box-shadow: 0 5px 8px #00000033;
+}
+
+@media screen and (min-width: 500px) {
+  .card {
+    max-width: 50%;
+    height: 100%;
+  }
+}
+@media screen and (min-width: 668px) {
+  .card {
+    max-width: 40%;
+    height: 100%;
+    padding: 2px;
+  }
+}
+
+@media screen and (min-width: 1048px) {
+  .card {
+    max-width: 400px;
+  }
+}

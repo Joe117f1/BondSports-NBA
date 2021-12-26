@@ -1,25 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import { Fragment } from 'react';
+import FavoritesProvider from './store/favoritesProvider';
+import ListContainer from './components/players-list/ListContainer';
+import classes from './App.module.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FavoritesProvider>
+      <div className={classes.pageTitle}>
+        <h1>NBA PLAYERS</h1>
+        <img src='/site-images/nba-logo-transparent.png' alt='NBA logo' />
+      </div>
+      <ListContainer />
+    </FavoritesProvider>
   );
 }
 

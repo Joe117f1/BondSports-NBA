@@ -1,0 +1,30 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.listHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 600px;
+  width: 400px;
+  border: 1px solid #d3e8fced;
+  border-radius: 8px;
+  border-top: 8px solid #1d428a;
+  object-fit: cover;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: center;
+  background-color: #ffffff6e;
+  /* background-image:url('/public/site-images/nba-logo.jpg');
+  background-size: cover; */
+}
+
+.container ul {
+  list-style: none;
+}

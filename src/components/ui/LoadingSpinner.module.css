@@ -1,0 +1,35 @@
+.spinner {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  left: calc(50% - 20rem);
+  margin-left: 2rem;
+  z-index: 100;
+}
+
+.spinner:after {
+  content: ' ';
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 3px solid #171717;
+  border-color: #171717 transparent #171717 transparent;
+  animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .spinner {
+    margin-left: 5rem;
+  }
+}
