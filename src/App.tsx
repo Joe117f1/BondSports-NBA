@@ -8,7 +8,7 @@ function App() {
     <FavoritesProvider>
       <div className={classes.pageTitle}>
         <h1>NBA PLAYERS</h1>
-        <img src='/site-images/nba-logo-transparent.png' alt='NBA logo' />
+        <img src={require('./assets/site-images/nba-logo-transparent.png')} alt='NBA logo' />
       </div>
       <ListContainer />
     </FavoritesProvider>
