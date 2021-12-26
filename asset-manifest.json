@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/BondSports-NBA/static/css/main.ea34438a.css",
-    "main.js": "/BondSports-NBA/static/js/main.43a765a1.js",
+    "main.js": "/BondSports-NBA/static/js/main.730dbea2.js",
     "static/media/nba-logo-transparent.png": "/BondSports-NBA/static/media/nba-logo-transparent.dccfe25abf6e5559aeb2.png",
     "index.html": "/BondSports-NBA/index.html",
     "main.ea34438a.css.map": "/BondSports-NBA/static/css/main.ea34438a.css.map",
-    "main.43a765a1.js.map": "/BondSports-NBA/static/js/main.43a765a1.js.map"
+    "main.730dbea2.js.map": "/BondSports-NBA/static/js/main.730dbea2.js.map"
   },
   "entrypoints": [
     "static/css/main.ea34438a.css",
-    "static/js/main.43a765a1.js"
+    "static/js/main.730dbea2.js"
   ]
 }
