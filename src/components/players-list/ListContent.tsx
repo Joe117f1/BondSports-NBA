@@ -43,7 +43,7 @@ const ListContent: React.FC<{
   };
 
   const placeHolder = isFavorites ? (
-    <h3 className={classes.placeHolder}>'Choose your favorite players</h3>
+    <h3 className={classes.placeHolder}>Choose your favorite players</h3>
   ) : (
     <LoadingSpinner />
   );
