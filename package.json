@@ -1,4 +1,5 @@
 {
+  "homepage": "http://Joe117f1.github.io/BondSports-NBA",
   "name": "nba-players",
   "version": "0.1.0",
   "private": true,
@@ -39,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
