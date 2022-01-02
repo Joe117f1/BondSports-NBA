@@ -12,7 +12,7 @@ import SearchPlayerForm from '../ui/SearchPlayerForm';
 import { PlayerFullData, Player } from '../../type-models/models';
 import classes from './PlayersList.module.css';
 
-const PLAYERS_API = 'https://www.balldontlie.io/api/v1/players'; //can be environment variable
+const PLAYERS_API = 'https://www.balldontlie.io/api/v1/players'; //can be an environment variable
 
 const PlayersList: React.FC<{
   isFavorites: boolean;
@@ -21,7 +21,6 @@ const PlayersList: React.FC<{
   const [players, setPlayers] = useState<Player[]>([]);
   const [cachedPlayers, setCachedPlayers] = useState<Player[]>([]);
   const [, setError] = useState<string | null>(null);
-  const [isRender, setRender] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState<string>('');
   const favoritesCtx = useContext(FavoritesContext);
 
@@ -52,10 +51,14 @@ const PlayersList: React.FC<{
   }, []);
 
   useEffect(() => {
+    if (props.isFavorites) {
+      setIsFavorites(true);
+      return;
+    }
     fetchPlayersList(PLAYERS_API).then(res => {
       favoritesCtx.cachePlayers(cachedPlayers);
     });
-  }, [fetchPlayersList]);
+  }, [fetchPlayersList, props.isFavorites]);
 
   const listTitle = isFavorites ? 'YOUR FAVORITE PLAYERS' : 'ALL PLAYERS';
 
@@ -67,26 +70,15 @@ const PlayersList: React.FC<{
     setBackgroundColor(color);
   };
 
-  const getSearchedPlayer = (player: Player) => {
+  const getSearchedPlayerHandler = (player: Player) => {
     const searcheResult = [player];
-    setRender(false);
     setPlayers(searcheResult);
   };
 
-  const getAllPlayers = () => {
-    setRender(true);
-    setPlayers(favoritesCtx.allPlayers);
+  const getCachedPlayersHandler = () => {
+    setPlayers(cachedPlayers);
     // fetchPlayersList(PLAYERS_API); // Might be better with caching the list
   };
-  useEffect(() => {
-    if (props.isFavorites) {
-      setIsFavorites(true);
-    }
-  }, [props.isFavorites]);
-
-  useEffect(() => {
-    setPlayers(cachedPlayers);
-  }, [isRender, cachedPlayers]);
 
   return (
     <div className={classes.list}>
@@ -96,20 +88,16 @@ const PlayersList: React.FC<{
         {!isFavorites && (
           <SearchPlayerForm
             list={players}
-            getSearchedPlayerHandler={getSearchedPlayer}
-            getCachedPlayersHandler={getAllPlayers}
+            onGetSearchedPlayer={getSearchedPlayerHandler}
+            onGetCachedPlayers={getCachedPlayersHandler}
           />
         )}
       </div>
       <div className={classes.container} style={{ backgroundColor }}>
-        <ListContent
-          players={listPlayers}
-          isFavorites={isFavorites}
-          bgc={backgroundColor}
-        />
+        <ListContent players={listPlayers} isFavorites={isFavorites} />
       </div>
     </div>
   );
 };
 
-export default React.memo(PlayersList);
+export default PlayersList;

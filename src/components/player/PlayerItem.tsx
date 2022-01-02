@@ -1,3 +1,4 @@
+import React from 'react';
 import Card from '../ui/Card';
 import { Player } from '../../type-models/models';
 import classes from './PlayerItem.module.css';
@@ -9,7 +10,7 @@ const PlayerItem: React.FC<{
 }> = props => {
   const { fullName, position, team } = props.player;
 
-  const togglePlayer = (ev: any) => {
+  const togglePlayerHandler = (ev: any) => {
     props.onToggleFavorite(props.player);
   };
 
@@ -17,7 +18,7 @@ const PlayerItem: React.FC<{
 
   return (
     <Card>
-      <div className={classes.card} onClick={togglePlayer}>
+      <div className={classes.card} onClick={togglePlayerHandler}>
         <h3 className={classes.title}>{fullName.toUpperCase()}</h3>
         <h3>{team}</h3>
         <h4>{`Position: ${position}`}</h4>

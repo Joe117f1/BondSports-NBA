@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useContext } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import FavoritesContext from '../../store/favorite-context';
 import PlayerItem from '../player/PlayerItem';
 import LoadingSpinner from '../ui/LoadingSpinner';
@@ -8,8 +8,6 @@ import classes from './ListContent.module.css';
 const ListContent: React.FC<{
   players: Player[];
   isFavorites: boolean;
-  bgc: string;
-  ref?: Player;
 }> = props => {
   const [isFavorites, setIsFavorites] = useState(false);
   const [isPlayers, setIsPlayers] = useState(false);
@@ -36,7 +34,7 @@ const ListContent: React.FC<{
       player.isFavorite = false;
       favoritesCtx.removePlayer(player);
     } else {
-      if (favoritesCtx.players.includes(player)) return; //can be turn to un-favorite
+      if (favoritesCtx.players.includes(player)) return; //can be turn into un-favorite
       player.isFavorite = true;
       favoritesCtx.addPlayer(player);
     }
@@ -69,4 +67,4 @@ const ListContent: React.FC<{
   );
 };
 
-export default ListContent;
+export default React.memo(ListContent);

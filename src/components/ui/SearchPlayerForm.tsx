@@ -4,18 +4,19 @@ import classes from './SearchPlayerForm.module.css';
 
 const SearchPlayerForm: React.FC<{
   list: Player[];
-  getSearchedPlayerHandler: (p: Player) => void;
-  getCachedPlayersHandler: () => void;
+  onGetSearchedPlayer: (p: Player) => void;
+  onGetCachedPlayers: () => void;
 }> = props => {
   const [enteredSearchValue, setEnteredSearchValue] = useState<string>('');
 
-  const formSubmitHandler = (ev: React.FormEvent) => {
+  const formSubmitHandler = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
+    if (!enteredSearchValue) return;
     const res = props.list.find(p =>
       p.fullName.toLowerCase().includes(enteredSearchValue.toLowerCase())
     );
     if (!res) return;
-    props.getSearchedPlayerHandler(res);
+    props.onGetSearchedPlayer(res);
     // clearInput(); //optional...
   };
 
@@ -27,8 +28,9 @@ const SearchPlayerForm: React.FC<{
     setEnteredSearchValue('');
   };
 
-  const getAllPlayers = () => {
-    props.getCachedPlayersHandler();
+  const getPlayersHandlers = (ev: React.MouseEvent<HTMLElement>) => {
+    ev.preventDefault();
+    props.onGetCachedPlayers();
   };
 
   return (
@@ -41,8 +43,8 @@ const SearchPlayerForm: React.FC<{
         value={enteredSearchValue}
       />
       <div className={classes.actions}>
-        <button>search</button>
-        <button onClick={getAllPlayers}>all players</button>
+        <button type='submit'>search</button>
+        <button onClick={getPlayersHandlers}>all players</button>
       </div>
     </form>
   );
